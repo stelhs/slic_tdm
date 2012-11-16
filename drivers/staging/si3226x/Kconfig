@@ -1,0 +1,9 @@
+config SI3226X
+	tristate "Silicon Labs SLIC driver si3226x"
+	depends on TDM && SPI
+	default n
+	help
+	  This driver supports SLIC chip si3226x.
+	  si3226x provide two FXS ports. For transport
+	  audiodata used tdm framework, for control used
+	  spi framework.

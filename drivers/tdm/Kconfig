@@ -1,0 +1,38 @@
+#
+# TDM driver configuration
+#
+menuconfig TDM
+	bool "TDM support"
+	depends on HAS_IOMEM
+	help
+	  Time-division multiplexing (TDM) is a type of digital (or rarely analog)
+	  multiplexing in which two or more bit streams or signals are
+	  transferred apparently simultaneously as sub-channels in one
+	  communication channel, but are physically taking turns on the
+	  channel. The time domain is divided into several recurrent
+	  timeslots of fixed length, one for each sub-channel. A sample
+	  byte or data block of sub-channel 1 is transmitted during timeslot 1,
+	  sub-channel 2 during timeslot 2, etc. One TDM frame consists of one
+	  timeslot per sub-channel plus a synchronization channel and
+	  sometimes error correction channel before the synchronization.
+
+if TDM
+
+config TDM_DEBUG
+	bool "Debug support for TDM drivers"
+	depends on DEBUG_KERNEL
+	help
+	  Say "yes" to enable debug messaging (like dev_dbg and pr_debug),
+	  sysfs, and debugfs support in TDM controller and protocol drivers.
+
+
+comment "TDM controllers"
+
+config TDM_KIRKWOOD
+#  TODO: add depend on kirkwood architecture
+#	depends on ARCH_KIRKWOOD
+	tristate "Marvel Kirkwood TDM Controller"
+	help
+	  This selects a driver for the Marvel Kirkwood TDM Controller.
+		  
+endif # TDM
